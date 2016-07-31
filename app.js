@@ -3,7 +3,7 @@
  */
 //const PORT = process.env.PORT || 3000;
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8081;
 
 var express = require('express');
 var morgan = require('morgan');
@@ -34,5 +34,5 @@ app.use('/', require('./routes/index'));
 
 var server = http.createServer(app);
 server.listen(port, ipaddress, err => {
-    console.log(err || `Server listening on port ${PORT}`);
+    console.log(err || `Server listening on port ${port}`);
 });
