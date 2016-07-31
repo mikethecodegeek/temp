@@ -8,10 +8,6 @@
     "start": "node app.js",
     "postinstall": "bower install"
   },
-  "engines": {
-    "node": "5.10.1",
-    "npm": "3.8.3"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
