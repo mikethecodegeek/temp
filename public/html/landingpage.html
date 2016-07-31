@@ -1,0 +1,204 @@
+<!-- MOVED CSS FOR MATERIAL BUTTONS HERE FOR NOW TO FIX CONSISTENCY ISSUES  -->
+<style>
+/*MATERIAL DESIGN BUTTONS START*/
+.btn {
+  position: relative;
+  display: block;
+  margin: 30px auto;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #27ae60;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn:before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  /*left: 50%;*/
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, .3);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btn.orange {
+  background-color: #e67e22;
+}
+
+.btn.orange:hover, .btn.orange:focus {
+  background-color: #d35400;
+}
+
+.btn.red {
+  background-color: #e74c3c;
+}
+
+.btn.red:hover, .btn.red:focus {
+  background-color: #c0392b;
+}
+/*MATERIAL DESIGN BUTTONS END*/
+
+</style>
+<div style="background-color:#316FAC;">
+<div class="wrapper top-space">
+
+  <header>
+    <div class="container">
+      <div class="image-responsive">
+        <div class="row" style="padding-top:5%;">
+          <div class="col-sm-8 col-sm-push-4">
+            <a ui-sref="sell"><i class="hvr-pulse-grow deviceIcon fa fa-tablet fa-5x" aria-hidden="true"></i></a>
+            <a ui-sref="sell"><i class="hvr-pulse-grow deviceIcon fa fa-laptop fa-5x" aria-hidden="true"></i></a>
+
+            <div class="landing-cta">Ready to kick your old phone to the curb?</div>
+            <h3 style="color:#fff;">Sell your cell (or tablet).</h3>
+
+            <button ui-sref="sell" style="margin-left: 0px;"class="btn" type="button"><span>Exchange Phone for Cash</span></button>
+
+            <aside>
+              <i class="fa fa-apple"></i>
+              <i class="fa fa-android"></i>
+              <i class="fa fa-windows"></i>
+            </aside>
+          </div>
+          <div class="col-sm-4 col-sm-pull-8">
+            <img class="phone" src="https://goo.gl/Qe1gzI"></img>
+          </div>
+        </div>
+      </div>
+
+  </header>
+
+<section id="section">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>How it Works:</h1>
+<h4>We know, you and your old phone have been through a lot together. Here’s what happens next:</h4>
+    </div>
+    <div class="col-sm-3">
+			<span class="fa-stack fa-3x">
+	<i class="fa fa-circle fa-stack-2x"></i>
+	<strong class="fa-stack-2x text-primary numStyle">1</strong>
+</span>
+<br>
+<br>
+      Pick that bad boy out of the lineup, tell us what condition it’s in, and get an almost magical instant quote.</div>
+    <div class="col-sm-3">
+			<span class="fa-stack fa-3x">
+	<i class="fa fa-circle fa-stack-2x"></i>
+	<strong class="fa-stack-2x text-primary numStyle">2</strong>
+</span>
+<br>
+<br>
+      Tell us how you want your money and where we can send your shipping label.</div>
+    <div class="col-sm-3">
+			<span class="fa-stack fa-3x">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <strong class="fa-stack-2x text-primary numStyle">3</strong>
+</span>
+	<br>
+	<br>
+      Send the phone, free of charge, to our inspection centre where we make sure it is in the condition you selected. </div>
+			<div class="col-sm-3">
+				<span class="fa-stack fa-3x">
+	  <i class="fa fa-circle fa-stack-2x"></i>
+	  <strong class="fa-stack-2x text-primary numStyle">4</strong>
+	</span>
+	<br>
+	<br>
+			We send the word out to our accounting department, who cuts you a cheque (or whatever high-tech, fancy pants payment method you chose).</div>
+  </div>
+</section>
+<section id="grid-sect">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:400px; background-color:#18BC9C;">
+      <div class="row grid-font">Feel the Love</div>
+      <div class="row">See what our customers have to say about us</div>
+      <button ui-sref="testimonials"class="btn red" type="button"><span>Reviews</span></button>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:400px; background-color:#00AFF0;">
+      <div class="row grid-font">Catch up</div>
+      <div class="row">On the latest and greatest from our blog</div>
+      <button class="btn orange" type="button"><span>Go to Blog</span></button>
+      <div class="grid-button"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:400px; background-color:#1D87BE">
+      <div class="row grid-font">Want to keep in touch?</div>
+      <div class="row">Cool. We'll be, like, totally awesome pen-pals. Except with email.</div>
+      <button class="btn orange" type="button"><span>Get Our Newsletter</span></button>
+      <div class="grid-button"></div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="height:400px; background-color:white;">
+      <div class="row grid-font" style="color:#173e7c;">Ready to get your quote? </div>
+      <div class="row" style="color:#173e7c;">We like the way you think.</div>
+      <button ui-sref="sell" class="btn" type="button"><span>Exchange Phone for Cash</span></button>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="col-md-12" style="background-color:#173e7c;color:#fff;">
+    <div class="col-md-12 col-sm-12 col-md-4 col-lg-4">
+				<div class="col-sm-1 col-xs-3 middle img-responsive">
+					<a href="https://www.facebook.com/technationnet" target="_blank"><img class="helper2 icon-margin hvr-wobble-vertical" src="../images/facebook.png" alt=""></a>
+				</div>
+				<div class="col-sm-1 col-xs-3 middle img-responsive">
+					<a href="https://twitter.com/technation_net" target="_blank"><img class="helper2 icon-margin hvr-wobble-vertical"  src="../images/twitter.png" alt=""></a>
+				</div>
+				<div class="col-sm-1 col-xs-3 middle img-responsive">
+					<a href="https://www.instagram.com/technationnet/" target="_blank"><img class="helper2 icon-margin hvr-wobble-vertical" src="../images/insta.png" alt=""></a>
+				</div>
+				<div class="col-sm-1 col-xs-3 middle img-responsive">
+					<a href="http://www.technation.net/blog" target="_blank"><img class="helper2 icon-margin hvr-wobble-vertical"  src="../images/rss.png" alt=""></a>
+				</div>
+  </div>
+    <div class="col-md-12 col-sm-12 col-md-4 col-lg-4">
+      <h4 style>You’ve got a new <span style="text-decoration: line-through;">love</span> device in your life and you’re ready to kick your old <span style="text-decoration: line-through;">flame</span> phone to the curb.</h4>
+      <h5>We’ve got you covered.</h5>
+      <p style="color:#fff;">©Copyright 2016, TechNation.net</p>
+    </div>
+    <div class="col-md-12 col-sm-12 col-md-4 col-lg-4" style="color:#fff;">
+        <a ui-sref="about" style="color:#fff;">About</a></br>
+        <a ui-sref="faq" style="color:#fff;">FAQs</a></br>
+        <a ui-sref="testimonials" style="color:#fff;">Testimonials</a></br>
+        <a ui-sref="legal" style="color:#fff;">Legal</a></br>
+        <a ui-sref="businesscontactform" style="color:#fff;">Bulk Sales</a></br>
+        <a ui-sref="contact" style="color:#fff;">Contact Us</a></br>
+    </div>
+  </div>
+</div>
+</footer>
+</div>

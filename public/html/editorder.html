@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row actionCallRow bottom" id="updateOrdersHeader">
+      <h2>Order Details</h2>
+  </div>
+
+  <div class="row alignLeft">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5 updateOrderInfo">
+          <h2 class="alignLeft detailsTitle">Quote Details:</h2>
+          <p>Quote # {{updateOrder._id.slice(15)}}</p>
+          <p>Order Date: {{updateOrder.date | date: format: short}}</p>
+          <p>User: <input id="orderUser" type="text" value ={{updateOrder.username}} ></p>
+          <p>Device: <input id="orderDevice" type="text" value={{updateOrder.device}} ></p>
+          <p>Condition: {{updateOrder.condition}}
+          <select id="orderCondition">
+              <option value="new">New</option>
+              <option value="used">Used</option>
+              <option value="broken">Broken</option>
+          </select></p>
+
+          <p>Quote Amount:$ <input id="orderAmount" type="text" value= {{updateOrder.amount}}></p>
+
+          <p>Payment Method: {{updateOrder.paymentmethod}}
+          <select id="orderPayment">
+              <option value="check">Check</option>
+              <option value="paypal">Paypal</option>
+              <option value="ach">ACH</option>
+          </select></p>
+          </p>
+          <p>Status: {{updateOrder.status}}
+              <select id="orderStatus">
+                  <option value="label">Label Shipped</option>
+                  <option value="received">Device Received</option>
+                  <option value="paid">Payment Sent</option>
+              </select></p>
+          </p>
+      </div>
+
+      <div class="col-sm-5 updateOrderInfo">
+          <h2 class="alignLeft detailsTitle">User Details:</h2>
+              <p>Name: {{user.name}}</p>
+              <p>Email: {{user.email}}</p>
+              <p>Phone: {{user.phone}}</p>
+              <p>Address: {{updateOrder.shippingaddress.address}}</p>
+              <p>City: {{updateOrder.shippingaddress.city}}</p>
+              <p>State: {{updateOrder.shippingaddress.state}}</p>
+              <p>Zip: {{updateOrder.shippingaddress.zip}}</p>
+      </div>
+      <div class="col-sm-1"></div>
+  </div>
+
+  <div class="row alignLeft">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+          <button class="btn btn-success" ng-click="updateQuote()">Update This Quote</button>
+      </div>
+      <div class="col-sm-5 alignLeft">
+          <button ui-sref="dashboard" class="btn btn-primary">Back To Orders</button>
+      </div>
+      <div class="col-sm-1"></div>
+
+  </div>
+
+</div>

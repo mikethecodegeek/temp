@@ -1,0 +1,82 @@
+<div class="container">
+  <br>
+  <div class="row selectionRow bottom">
+    <h2 class="center bottom" ng-show="one">Select Your Brand</h2>
+  </div>
+  <div class="row center" ng-show="one">
+    <div class="col-sm-3" ng-repeat="device in devices track by $index">
+        <div class="row bottom">
+            <img ng-click="showModels(device.models)" class="selectionImage hvr-bounce-in" ng-src="{{device.imgurl}}" alt="device-image">
+            <div class="caption">
+                <h3></h3>
+                <button type="button" class="btn btn-primary bottom" ng-click="showModels(device.models)">{{device.name}}</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row selectionRow">
+      <h2 class="center bottom topMargin" ng-show="two">Select Your Model</h2>
+  </div>
+
+  <div class="row center topMargin" ng-show="two">
+    <div class="col-sm2 backArrow center">
+      <img ng-click="showBrands()" class="btn" width="75"  src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/256/Rewind_track_button_blue_play.png" alt="">
+      <h3 class="backArrowBtn">Brands</h3>
+    </div>
+
+    <div class="col-sm-3" ng-repeat="model in selectedModels track by $index">
+      <img ng-click="showDevices(model)" class="selectionImage hvr-bounce-in" ng-src="{{model.imgurl}}" alt="device-image">
+
+      <div class="caption bottom">
+        <h3></h3>
+        <button type="button" class="btn btn-primary bottom" ng-click="showDevices(model)">{{model.name}}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row selectionRow">
+      <h2 ng-show="three" class="center bottom topMargin">Select Your Device</h2>
+  </div>
+  <div ng-show="three" class="row center topMargin">
+    <div class="col-sm2 backArrow">
+      <img ng-click="showModelsAgain()" class="btn" width="75"  src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/256/Rewind_track_button_blue_play.png" alt="">
+      <h3 class="backArrowBtn">Models</h3>
+    </div>
+    <div class="col-sm-3" ng-repeat="device in currentDevices track by $index">
+      <img ng-click="showCapacities(device)" class="selectionImage hvr-bounce-in" ng-src="{{device.imgurl}}" alt="device-image">
+        <div class="caption">
+          <h3>{{device.model}}</h3>
+          <h6>{{device.devicename}}</h6>
+          <button type="button" class="btn btn-primary"  ng-click="showCapacities(device)">Select Capacity</button>
+
+        </div>
+    </div>
+  </div>
+
+
+  <div class="row selectionRow">
+      <h2 ng-show="four" class="center bottom topMargin">Select Your Capacity</h2>
+  </div>
+
+  <div ng-show="four" class="row center topMargin">
+      <div class="col-sm2 backArrow">
+          <img ng-click="showDevicesAgain()" class="btn" width="75" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/256/Rewind_track_button_blue_play.png" alt="">
+          <h3 class="backArrowBtn">Device</h3>
+      </div>
+
+      <div class="col-sm-3" ng-repeat="capacity in selectedCapacities track by $index">
+          <img ng-click="getQuote(capacity)" class="selectionImage hvr-bounce-in" ng-src="{{capacity.imgurl}}" alt="device-image">
+          <div class="caption">
+              <h3>{{capacity.size}}</h3>
+              <button ng-click="getQuote(capacity)" type="button" class="btn btn-lg btn-success">Get Quote</button>
+
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+</div>

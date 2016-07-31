@@ -1,0 +1,31 @@
+<div class="container">
+  <h4>Congratulations! Your {{currentDevice.devicename}} is worth {{customQuote | currency}}!</h4>
+
+  <div>
+      <p>Device Type: {{currentDevice.currentType}}</p>
+      <p>Brand: {{currentDevice.currentBrand}}</p>
+      <p>Model: {{currentDevice.currentModel}}</p>
+      <p>Version: {{currentDevice.currentVersion}}</p>
+      <p>Condition: {{currentDevice.condition}}</p>
+      <p>Carrier: {{currentDevice.carrier}}</p>
+      <h3 class="locked">Please select how you would like to be paid!</h3>
+
+      <label class="radio-inline">
+          <input name="radioGroup" id="paypal" value="option1" type="radio">PayPal
+      </label>
+      <label class="radio-inline">
+          <input name="radioGroup" id="check" value="option2" type="radio">Check
+      </label>
+      <label class="radio-inline">
+          <input name="radioGroup" id="ach" value="option2" type="radio">ACH
+      </label>
+      <h3 class="locked">When you get your shipping label, mail us your device.</h3>
+
+  </div>
+  <div>
+      <button ng-if="!quoteAllowed" type="button" class="btn btn-success" ng-click="registerWithQuote()">Register</button>
+      <button ng-if="quoteAllowed" type="button" class="btn btn-success"  ng-click="addThisTransaction()">Get paid!</button>
+      <button type="button" class="btn btn-danger" ng-click="cancelTransaction()">Maybe Later</button>
+  </div>
+
+</div>

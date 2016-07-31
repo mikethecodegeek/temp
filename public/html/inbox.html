@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Inbox</h1>
+
+  <table class="table">
+      <tr>
+          <th>Date</th>
+          <th>From</th>
+          <th>Message</th>
+      </tr>
+     <tr ng-repeat="message in messages">
+         <td>Date?</td>
+         <td>{{message.user.username}}</td>
+         <td>{{message.message}}</td>
+         <td><button attr={{message._id}} ng-click="deleteMessage(message._id)">Delete</button></td>
+
+
+     </tr>
+
+  </table>
+</div>

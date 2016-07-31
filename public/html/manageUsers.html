@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row adminNavbar">
+      <div class="col-sm-10">
+          <h1 class="bottom" id="manageDevices">Manage Users</h1>
+      </div>
+      <div class="col-sm-2 top">
+          <a class="adminNavLinks" ui-sref="dashboard">Manage Orders</a></br>
+          <a class="adminNavLinks" ui-sref="devices">Manage Devices</a></br>
+          <a class="adminNavLinks" ui-sref="settings">Manage Settings</a></br>
+      </div>
+  </div>
+
+  <div class="row">
+      <input placeholder="search users" class="searchInput" type="text" ng-model="sortByName">
+  </div>
+
+
+  <table class="table">
+      <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>Address</th>
+          <th># of Transactions</th>
+      </tr>
+      <tr ng-repeat="user in userArr | filter: sortByName">
+          <td>{{user.name}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.city}}</td>
+          <td>{{user.state}}</td>
+          <td>{{user.zip}}</td>
+          <td>{{user.address}}</td>
+          <td>{{user.transactions.length}}</td>
+          <td> <button class="btn btn-warning" ui-sref="edituser({userid: user._id})">Edit</button></td>
+          <td> <button class="btn btn-danger" ng-click=deleteUser(user._id)>Delete</button></td>
+      </tr>
+  </table>
+
+  <div class="row">
+      <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 class="modal-title" id="myModalLabel">Quote for your {{device.devicename}}: $100</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p>Name:</p>
+                      <p>Email:</p>
+                      <p>Address: </p>
+                      <p></p>
+                      <p>City: </p>
+                      <p>State: </p>
+                      <p>Country</p>
+                      <p>Phone: </p>
+
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="editUser()">Confirm Sale</button>
+                      <button type="button" class="btn btn-primary" ng-click="cancelEdit()">Cancel Sale</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>

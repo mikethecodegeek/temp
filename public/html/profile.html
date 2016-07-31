@@ -1,0 +1,113 @@
+<div class="container profileState">
+	<div class="row">
+		<div class="col-md-9 col-md-push-3">
+			<div class="latestOrder">
+				<h2>Track Your Offer</h2>
+				<h6 style="text-align:center;">Back already? Couldn’t stay away, could you?</h6>
+				<div class="progressBar">
+					<h4>Your Latest Offer: {{lastTransDevice}}</h4>
+					<h4>Submitted On: {{lastTransDate | date : format : short}}</h4>
+					<div class="progress-bar-frame">
+							<img style="border-radius: 55px;" class="img-responsive progAnimate" ng-show="!hideProgBar" ng-src="{{progBar}}" alt="{{lastTransStat}}"/>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- <button type="button" ng-show="allTrans" class="btn btn-success">See All Transactions</button> -->
+			<!-- <a href class="btn btn-success" ng-click="goAll = !goAll">All Transactions</a> -->
+			<a ng-class="{true: 'btn btn-success' , false: 'btn btn-primary'}[!goAll]" ng-click="goAll = !goAll">{{!goAll && 'See' || 'Hide'}} All Your Offers</a>
+			<a ng-class="{true: 'btn btn-warning' , false: 'btn btn-primary'}[!sendMessage]" ng-click="sendMessage = !sendMessage">{{!sendMessage && 'Need Help?' || 'Hide Help'}}</a>
+
+			<div class="row messageRow" ng-show="sendMessage">
+				<h3 >Having Issues? Send a Message to TechNation.net.</h3>
+				<h5 >We will get back to you within 24 hours!</h5>
+				<textarea placeholder="250 words max" ng-model="newMessage" name="" id="" cols="100" rows="10"></textarea>
+				<div>
+					<button class="btn btn-default" id="sendMessage" ng-click="askAQuestion()">Send Message</button>
+				</div>
+			</div>
+
+
+		<div class="allTrans" ng-show="goAll">
+			<h3>All My Transactions</h3>
+
+			<label for="search">Find a Transaction:</label>
+			<input placeholder="example: 'iPhone 6s'" class="searchInput" type="text" ng-model="sortByName">
+			<br>
+			<table class="table">
+				<tr>
+					<th>Date</th>
+					<th>Device Name</th>
+					<th>Status</th>
+					<th>Quote</th>
+				</tr>
+				<tr ng-repeat="transaction in user.transactions | filter: sortByName">
+					<td>{{transaction.date | date : format : short }}</td>
+					<td>{{transaction.device}}</td>
+					<td>{{transaction.status}}</td>
+					<td>{{transaction.amount | currency}} </td>
+					<td><button class="btn btn-success" ng-show="!transaction.kitordered" ng-click="shipKit(transaction, $index)">Get My Free Shipping Kit</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+		<div class="col-md-3 col-md-pull-9">
+			<h3 style="color:#1e3c72">{{user.name}}&#39;s Dashboard</h3>
+			<p>Total Quotes: {{user.transactions.length}}</p>
+				<p>Total Kits Ordered: {{kits}}</p>
+			<p>Total Completed Sales: {{completedSales}}</p>
+			<p>Total Income: {{totalIncome| currency}}</p>
+			<p>Join Date: {{user.joinDate | date : format : short}}</p>
+			<p><button class="btn btn-warning" ui-sref="userupdate">Change My Info</button></p>
+		</div>
+	</div>
+
+
+<div class="row">
+	<div class="modal fade" id="shippingKit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>
+				<div class="modal-body">
+					<h2>Quote #: {{confirm._id.slice(15)}}</h2>
+					<h3>Device</h3>
+					<p>Model: {{confirm.device}}</p>
+					<p>Condition: {{confirm.condition}}</p>
+					<p>Amount you're getting paid: {{confirm.amount | currency}}</p>
+					<p>How we will pay you: {{confirm.paymentmethod}}</p>
+					<h2>Your Info</h2>
+					<p>{{user.name}}</p>
+					<p>{{user.email}}</p>
+					<h3>Shipping Address</h3>
+					<h4>Where do you want us to ship your free kit?</h4>
+					<input type="radio" name="shipOption" value="defaultaddress" ng-model="shippingaddress" ng-value="user.defaultaddress">
+					<p>City: {{user.defaultaddress.city}}</p>
+					<p>State: {{user.defaultaddress.state}}</p>
+					<p>Zip: {{user.defaultaddress.zip}}</p>
+					<p>Street: {{user.defaultaddress.address}}</p>
+					<h3>Or use another address</h3>
+					<div ng-repeat="address in user.addresses">
+						<input type="radio" name="shipOption" value="diffaddress" ng-model="$parent.shippingaddress" ng-value="address">Mail to this address
+						<p>Address: {{address.address}}</p>
+						<p>City: {{address.city}}</p>
+						<p>State: {{address.state}}</p>
+						<p>Zip: {{address.zip}}</p>
+						</div>
+
+				</div>
+				<div class="modal-footer">
+					<button ng-if="!quoteAllowed" type="button" class="btn btn-success" data-dismiss="modal" ng-click="confirmOrder(confirm)">Get My Free Kit!</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Maybe Later</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>

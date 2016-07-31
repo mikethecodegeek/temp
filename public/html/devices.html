@@ -1,0 +1,194 @@
+<div class="container">
+  <div id="deviceNav" class="row adminNavbar">
+      <div class="col-sm-10">
+          <h1 class="bottom" id="manageDevices">Manage Devices</h1>
+      </div>
+      <div class="col-sm-2 top">
+          <a class="adminNavLinks" ui-sref="dashboard">Manage Orders</a></br>
+          <a class="adminNavLinks" ui-sref="users">Manage Users</a></br>
+          <a class="adminNavLinks" ui-sref="settings">Manage Settings</a></br>
+      </div>
+  </div>
+
+  <div class="container categoriesContainer">
+      <h3 class="center bottom title">View/Manage Devices</h3>
+      <div class="row">
+          <button class="btn btn-primary" id="addDeviceCat" ng-click="toggleAddDevice()" title="Add New Device Category">Add New Device</button>
+      </div>
+
+      <div ng-show="adding" class="row bottom">
+          <h3 class="stepsHeader"><img width="65" class="numberOne" src="images/number_one.png" alt="">Select a Device Category</h3>
+
+          <div id="repeatDevice" class="row repeatRow top">
+              <div ng-repeat="type in devicetypes" class="col-sm-3">
+                  <div class="item" ng-click="setDeviceType(type)">
+                      <img class="deviceType" width="100" src={{type.imgurl}}>
+                      <span>{{type.devicetype}}</span>
+                  </div>
+                  <button class="btn btn-danger" ng-click="removeCategory(type._id)">Remove Category</button>
+              </div>
+          </div>
+
+          <hr>
+          <h3 class="stepsHeader">Add a New Device Category</h3>
+          <form ng-submit="addNewDeviceType()">
+              <div class="col-sm-3 left">
+                  <p>New Category:</br>
+                      <input placeholder="category" type="text" ng-model="newDeviceType" required="required"></p>
+              </div>
+              <div class="col-sm-3">
+                  <p>Category Image:</br>
+                      <input placeholder="url" type="text" ng-model="newDeviceTypeImage" required="required"></p>
+              </div>
+              <div class="col-sm-3">
+                  <button class="btn btn-primary categoryBtn" type="submit">Add Category</button>
+              </div>
+
+          </form>
+
+      </div> <!-- End adding Section -->
+
+      <div ng-hide="branding" class="row bottom">
+          <h3 class="stepsHeader"><img width="65" class="numberOne" src="images/number_two.png" alt=""> Select a Brand</h3>
+
+              <label class="left" for="search">Search Brands:</label>
+              <input placeholder="e.g. android" class="searchInput" type="text" ng-model="sortByName">
+
+          <div id="repeatBrand" class="row repeatRow top">
+              <div ng-repeat="brand in filteredBrands| filter: sortByName" class="col-sm-3">
+
+                  <div class="item" ng-click="setBrand(brand)">
+                      <img class="deviceType" width="100" src={{brand.imgurl}}>
+                      <h4>{{brand.name}}</h4>
+                  </div>
+                  <button class="btn btn-danger" ng-click="removeBrand(brand._id)">Remove Brand</button>
+              </div>
+          </div>
+          <hr>
+          <h3 class="stepsHeader">Add a New Brand</h3>
+          <form ng-submit="addBrand()">
+              <div class="col-sm-3">
+                  <p>New Brand:
+                      <input placeholder="brand" type="text" ng-model="newBrand" required="required"></p>
+              </div>
+              <div class="col-sm-3">
+                  <p>Brand Image:
+                      <input placeholder="url" type="text" ng-model="newBrandImage" required="required"></p>
+              </div>
+              <div class="col-sm-3">
+                  <button class="btn btn-primary brandBtn" type="submit">Add Brand</button>
+              </div>
+
+          </form>
+
+      </div> <!-- End branding Section -->
+
+      <div ng-hide="modeling" class="row bottom">
+           <h3 class="stepsHeader"><img width="65" class="numberOne" src="images/number_three.png" alt=""> Select a Model</h3>
+
+
+          <label class="left" for="search">Search Models:</label>
+          <input placeholder="e.g. 5s" class="searchInput" type="text" ng-model="sortByName">
+          <div id="repeatModel" class="row repeatRow bottom top">
+              <div ng-repeat="model in filteredModels | filter: sortByName" class="col-sm-3">
+
+                  <div class="item" ng-click="setModel(model)">
+                      <img class="deviceType" width="100" src={{model.imgurl}}>
+                      <h4>{{model.name}}</h4>
+                  </div>
+                  <button class="btn btn-danger" ng-click="removeModel(model._id)">Remove Model</button>
+              </div>
+          </div>
+          <hr>
+          <h3 class="stepsHeader">Add a New Model</h3>
+          <form ng-submit="addNewDeviceModel()">
+              <div class="col-sm-3">
+                  <p>New Model:
+                      <input placeholder="model" type="text" ng-model="newDeviceModel" required="required"></p>
+              </div>
+              <div class="col-sm-3">
+                  <p>Model Image:
+                      <input placeholder="url" type="text" ng-model="newDeviceModelImage" required="required"></p>
+              </div>
+
+              <div class="col-sm-3">
+                  <button class="btn btn-primary modelBtn" type="submit">Add Model</button>
+              </div>
+
+          </form>
+
+      </div> <!-- End modeling -->
+
+
+      <div ng-hide="capacitying" class="row bottom">
+           <h3 class="stepsHeader"><img width="65" class="numberOne" src="images/number_four.png" alt=""> Devices</h3>
+
+
+          <div id="repeatCapacity" class="row repeatRow top">
+              <div ng-repeat="device in filteredDevices" class="col-sm-3">
+                  <div class="item" ng-click="setDeviceInput(device.devicename)">
+                      <img class="deviceType" width="100" src={{device.imgurl}}>
+                      <h4>{{device.devicename}}</h4>
+                  </div>
+                  <button class="btn btn-danger" ng-click="removeDevice(device)">Remove Device</button>
+              </div>
+          </div>
+          <hr>
+          <h3 class="stepsHeader">Add a New Device</h3>
+          <form ng-submit="addDevice(newCapacity,newDevice)">
+
+              <div class="row">
+                  <div class="col-sm-4">
+                      <span>Device Name: </br> </span><input id="setThisDevice" type="text" ng-model = "newCapacity.deviceName" required="required">
+                  </div>
+                  <div class="col-sm-4">
+                      <span>Capacity: </br> </span><input type="text" ng-model = "newCapacity.name" required="required">
+                  </div>
+                  <div class="col-sm-4">
+                      <span>Image URL: </br></span><input placeholder="url" type="text" ng-model="newCapacity.image" required="required">
+                  </div> <br>
+              </div>
+              <div class="row new">
+                  <div class="col-sm-4">
+                      <span>New Price: </br></span><input id="new" placeholder="new" type="number" ng-model="new1" required="required">
+                  </div>
+                  <div class="col-sm-4">
+                      <span>Used Price: </br></span><input id="used" placeholder="used" type="number" ng-model="used1" required="required">
+                  </div>
+                  <div class="col-sm-4">
+                      <span>Broken Price: </br></span><input id="broken" placeholder="broken" type="number" ng-model="broken1" required="required">
+                  </div>
+              </div>
+
+              <button title="Add new device to website" class="btn btn-primary addDeviceBtn" type="submit">Add New Device</button>
+          </form>
+
+      </div> <!-- End capacitying -->
+
+  </div> <!-- End Container -->
+
+
+  <div class="container bottom currentDevicesContainer">
+      <div class="row">
+          <h3 class="center new title">Current Devices</h3>
+              <div class="row" id="deviceSearchBox">
+                  <label class="left" for="search">Find a Device:</label>
+                  <input placeholder="e.g. iPhone 6s" class="searchInput" type="text" ng-model="sortByName">
+              </div>
+          <div class="card card-primary text-xs-center center" ng-repeat="device in currentDevices | filter: sortByName">
+              <div class="card-block center col-sm-3">
+                  <blockquote class="card-blockquote">
+                      <img class="controlImage" src={{device.imgurl}} />
+                      <p>{{device.devicename}}</p>
+                      <div class="row trashRow">
+
+                          <button ng-click="removeDevice(device)" id="removeDeviceBtn" class="btn btn-danger topMargin bottom"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                      </div>
+                  </blockquote>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>

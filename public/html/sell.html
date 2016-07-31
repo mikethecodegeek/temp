@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row selectionRow center topMargin">
+		<h1 id="selectDeviceHead">Select your device</h1>
+
+	</div>
+
+	<div class="row deviceRow">
+		<div  ui-sref="home({devicetype:device.devicetype})"ng-repeat="device in devicetypes" class="deviceEach col-sm-3 col-xs-6 device-card">
+		<div class="row">
+			<img class="sellImg" width="150" src={{device.imgurl}} />
+		</div>
+		<div class="row relative">
+			<h3 class="deviceTypes absolute">Sell {{device.devicetype}}</h3>
+		</div>
+		</div>
+	</div>
+
+</div>

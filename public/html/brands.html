@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row deviceHeader">
+      <h1 class="center">Choose Your Brand</h1>
+  </div>
+
+  <div class="row deviceRow">
+      <div ui-sref="home({devicetype:device.devicetype})"ng-repeat="device in devicetypes" class="deviceEach col-sm-3">
+          <img width="175" src={{device.imgurl}} />
+
+          <h3 class="deviceTypes center">Sell {{device.devicetype}}</h3>
+      </div>
+  </div>
+
+  <div class="row deviceHeader">
+      <h1 class="center">Choose Your Model</h1>
+  </div>
+
+  <div class="row deviceRow">
+      <div ui-sref="home({devicetype:device.devicetype})"ng-repeat="device in devicetypes" class="deviceEach col-sm-3">
+          <img width="175" src={{device.imgurl}} />
+
+          <h3 class="deviceTypes center">Sell {{device.devicetype}}</h3>
+      </div>
+  </div>
+
+  <div class="row deviceHeader">
+      <h1 class="center">Choose Your Device</h1>
+      <p class="center">Select your device. Get a fast quote.</p>
+  </div>
+
+  <div class="row deviceRow">
+      <div ui-sref="home({devicetype:device.devicetype})"ng-repeat="device in devicetypes" class="deviceEach col-sm-3">
+          <img width="175" src={{device.imgurl}} />
+
+          <h3 class="deviceTypes center">Sell {{device.devicetype}}</h3>
+      </div>
+  </div>
+
+  </div>
+
+</div>

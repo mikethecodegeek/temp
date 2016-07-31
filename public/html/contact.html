@@ -1,0 +1,51 @@
+<div class="container">
+
+    <div class="row" >
+        <div class="col-md-6 col-md-offset-3">
+          <div class="well well-sm" style="background-color: #fff; border: none;">
+            <form class="form-horizontal" ng-submit="sendRequest(contact)">
+            <fieldset>
+              <h1 class="text-center">Contact Us</h1>
+  						<p>If you’re looking to know more about how this whole process works, check out our <a ui-sref="about">About</a> and <a ui-sref="faq">FAQs</a> pages. Still want to get in touch? Fill out the form below and someone from our team will get back to you. </p>
+              <!-- Name input-->
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="name">Name</label>
+                <div class="col-md-9">
+                  <input id="name" name="name" type="text" ng-model="contact.name" placeholder="Your name" class="form-control" required="true">
+                </div>
+              </div>
+
+              <!-- Email input-->
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="email">Your E-mail</label>
+                <div class="col-md-9">
+                  <input id="email" name="email" type="email" ng-model="contact.email" placeholder="Your email" class="form-control" required="true">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="subject">Subject</label>
+                <div class="col-md-9">
+                  <input type="text" id="subject" name="message" ng-model="contact.subject" placeholder="Subject" rows="5" required="true">
+                </div>
+              </div>
+              <!-- Message body -->
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="message">Your message</label>
+                <div class="col-md-9">
+                  <textarea class="form-control" id="message" name="message" ng-model="contact.content" placeholder="Please enter your message here..." rows="5" required="true"></textarea>
+                </div>
+              </div>
+
+              <!-- Form actions -->
+              <div class="form-group">
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+            </form>
+          </div>
+        </div>
+  	</div>
+
+</div>

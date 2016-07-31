@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Add Product</h2>
+  <div class="input-field">
+      <label for = 'name'>Name of Product</label>
+      <input id = 'name' type="text" ng-model="newName">
+  </div>
+  <div class="input-field">
+      <label for = 'pic'>Upload Product Image</label>
+      <input id = 'pic' type="text" ng-model="newPicture">
+
+  </div>
+  <div class="input-field">
+      <label for = 'category'>Category</label>
+      <input id = 'category' type="text" ng-model="newCategory">
+
+  </div>
+
+  <div class="input-field col s12">
+      <textarea id="textarea1" class="materialize-textarea" ng-model="newDescription"></textarea>
+      <label for="textarea1">Description of Item</label>
+  </div>
+
+
+
+
+  <a class="btn" ng-click="postItem()">Sell It!!</a>
+</div>

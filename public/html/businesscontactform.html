@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row actionCallRow" id="testimonialHeader">
+		<h1>Bulk Sales/Corporate Contact Form</h1>
+	</div>
+
+	<div class="row businessRow">
+		<h4>Time for your company to upgrade your devices? Impress the boss (or yourself!) and contact our team with the details, and we’ll give you a custom quote.</h4>
+		<p>We will get back to you as soon as possible</p>
+
+	<form ng-submit="sendRequest(business)">
+	    <p>Name: </br><input type="text" ng-model="business.name" required="true" /></p></br>
+	    <p>Phone: </br><input type="text" ng-model="business.phone" required="true"/></p></br>
+	    <p>E-mail: </br><input type="email" ng-model="business.email" required="true"/></p></br>
+	    <p>Subject: </br><input type="text" ng-model="business.subject" required="true"/></p></br>
+	    <p>Content: </br><textarea name="content" cols="45" rows="10" ng-model="business.content" required="true"></textarea></p></br>
+	    <input type="submit" value="Send" />
+	</form>
+
+
+
+</div>

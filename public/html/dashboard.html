@@ -1,0 +1,69 @@
+<div class="container">
+<div class="row adminNavbar">
+    <div class="col-sm-10">
+        <h1 class="bottom" id="manageDevices">Manage Orders</h1>
+    </div>
+    <div class="col-sm-2 top">
+        <a class="adminNavLinks" ui-sref="devices">Manage Devices</a></br>
+        <a class="adminNavLinks" ui-sref="users">Manage Users</a></br>
+        <a class="adminNavLinks" ui-sref="settings">Manage Settings</a></br>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 col-sm-offset-1">
+    <input placeholder="Search Orders" class="searchInput" type="text" ng-model="sortByName">
+    </div>
+</div>
+
+<div class="col-sm-9 col-sm-offset-1">
+<table class="table">
+    <tr>
+        <th>Quote Number</th>
+        <th>Username</th>
+        <th>Quote Amount</th>
+        <th>Device</th>
+        <th>Condition</th>
+        <th>Current Status</th>
+        <th>Payment Method</th>
+    </tr>
+
+    <tr ng-repeat="order in myOrders | filter: sortByName">
+        <td>{{order._id.slice(15)}}</td>
+        <td>{{order.username}}</td>
+        <td>{{order.amount | currency}}</td>
+        <td>{{order.device}}</td>
+        <td>{{order.condition}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.paymentmethod}}</td>
+        <td><button class="btn btn-danger" ng-click="deleteOrder(order)">Delete</td>
+        <td><button class="btn btn-warning" ui-sref="editorder({orderid: order._id})">Manage</button></td>
+    </tr>
+
+</table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ordersModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Order Details</h4>
+            </div>
+            <div class="modal-body">
+                <p ng-bind="userName">{{}}</p>
+                <p ng-bind="quoteAmount">{{}}</p>
+                <p ng-bind="device">{{}}</p>
+                <p ng-bind="description">{{}}</p>
+                <p ng-bind="date">{{}}</p>
+                <p ng-bind="status">{{}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
